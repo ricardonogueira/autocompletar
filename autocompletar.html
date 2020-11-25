@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo AutoCompletar</title>
+		<script src="jquery-3.5.1.js"></script>
+		
+		<script>
+			$(document).ready(function() {
+			
+				$('#campo_nome').keyup(function() {
+
+					var nome = $('#campo_nome').val();
+					
+					$.post( 'auxiliar.php', 
+							{parametro: nome},
+							function (dado, status) {
+								$('#resultado').html(dado);
+					});
+				});
+			});
+		</script>
+		
+	</head>
+	
+	<body>
+		<div id="resultado"></div>
+		<input type="text" name="campo_nome" id="campo_nome"/>
+	</body>
+</html>
